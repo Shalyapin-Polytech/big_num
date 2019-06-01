@@ -1,6 +1,5 @@
 #include "big_num.h"
 #include "math_utils.h"
-#include <stdio.h>
 
 int* split(int digit) {
     int* res = calloc(3, sizeof(int));
