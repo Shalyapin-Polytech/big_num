@@ -2,7 +2,7 @@
 #include "math_utils.h"
 
 int* split(int digit) {
-    int* res = malloc(3 * sizeof(int));
+    int* res = calloc(3, sizeof(int));
     for (int i = 0; i < digit_size; i++) {
         res[i] = (digit / powi(10, i)) % 10;
     }

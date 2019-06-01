@@ -2,7 +2,7 @@
 
 big_num create_empty(int released_size) {
     big_num obj = {
-            .digits = malloc(digit_size * released_size * sizeof(int)),
+            .digits = calloc(digit_size * released_size, sizeof(int)),
             .released_size = released_size,
             .size = 1
     };

@@ -1,7 +1,7 @@
 #include "big_num.h"
 
 char* cut(char* str, int from, int to) {
-    char* res = malloc((to - from + 2) * sizeof(char));
+    char* res = calloc(to - from + 2, sizeof(char));
 
     for (int i = from; i <= to && str[i] != 0; i++) {
         res[i - from] = str[i];
