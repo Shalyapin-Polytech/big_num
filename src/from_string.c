@@ -1,5 +1,6 @@
 #include "big_num.h"
 #include "math_utils.h"
+#include <string.h>
 
 big_num from_string(char* str) {
     big_num num = create_empty(ceil_div(strlen(str), digit_size));

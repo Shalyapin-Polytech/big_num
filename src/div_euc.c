@@ -1,4 +1,5 @@
 #include "big_num.h"
+#include <string.h>
 
 char* cut(char* str, int from, int to) {
     char* res = calloc(to - from + 2, sizeof(char));
@@ -39,7 +40,7 @@ division div_euc(big_num a, big_num b) {
         cut_str_a_2 = cut(str_a, strlen(str_a) - j + 1, strlen(str_a));
 
         division div_u = div_close(from_string(cut_str_a_1), b);
-        quotient = add(shift(quotient, 1), div_u.quotient);//from_string(to_string
+        quotient = add(shift(quotient, 1), div_u.quotient);
         remainder = div_u.remainder;
 
         memset(str_a, 0, (size_t) str_a_len);

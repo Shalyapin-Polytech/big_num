@@ -2,7 +2,6 @@
 #define BIG_NUM_H
 
 #include <stdlib.h>
-#include <string.h>
 
 #define digit_size 3
 

@@ -11,7 +11,7 @@ big_num shift(big_num num, int exp) {
     }
     for (int i = from; i < res.released_size; i++) {
         put(&res, i, res.digits[i] + num.digits[i - from] % ( powi(10, digit_size - transfer_size) ) * powi(10, transfer_size));
-        put(&res, i + 1, num.digits[i - from] / powi(10, digit_size - transfer_size)); //clean
+        put(&res, i + 1, num.digits[i - from] / powi(10, digit_size - transfer_size));
     }
 
     return res;

@@ -1,5 +1,6 @@
 #include "big_num.h"
 #include <stdio.h>
+#include <string.h>
 
 int main() {
     char input_file_name[256], output_file_name[256];
