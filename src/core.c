@@ -13,7 +13,8 @@ big_num create_empty(int released_size) {
 
 void put(big_num* num, int to, int what) {
     if (to >= num->released_size) {
-        error("not enough allocated memory")
+        printf("attempt to put %d to %d\n", what, to);
+        error("not enough allocated memory");
     }
     num->digits[to] = what;
     if (what == 0) {

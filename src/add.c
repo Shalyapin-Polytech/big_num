@@ -2,14 +2,17 @@
 #include "math_utils.h"
 
 big_num add(big_num a, big_num b) {
-    int max_size = compare(a, b) > 0 ? a.size : b.size;
-    big_num res = create_empty(max_size + 1);
+    big_num max = compare(a, b) > 0 ? a : b;
+    big_num min = compare(a, b) <= 0 ? a : b;
+    big_num res = create_empty(max.size + 1);
 
-    for (int i = 0; i < max_size; i++) {
-        put(&res, i, res.digits[i] + a.digits[i] + b.digits[i]);
-        if (res.digits[i] >= powi(10, digit_size)) {
-            put(&res, i + 1, res.digits[i + 1] + 1);
-            put(&res, i, res.digits[i] - powi(10, digit_size));
+    for (int i = 0; i < max.size; i++) {
+        int digits_sum = res.digits[i] + max.digits[i] + ( i < min.size ? min.digits[i] : 0 );
+        if (digits_sum < powi(10, digit_size))
+            put(&res, i, digits_sum);
+        else {
+            put(&res, i, digits_sum - powi(10, digit_size));
+            put(&res, i + 1, 1);
         }
     }
 

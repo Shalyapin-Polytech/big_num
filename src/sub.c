@@ -7,11 +7,12 @@ big_num sub(big_num a, big_num b) {
     big_num res = create_empty(minuend.size);
 
     for (int i = 0; i < minuend.size; i++) {
-        if (minuend.digits[i] < subtrahend.digits[i]) {
+        int subtrahend_digit = i < subtrahend.size ? subtrahend.digits[i] : 0;
+        if (minuend.digits[i] < subtrahend_digit) {
             put(&minuend, i + 1, minuend.digits[i + 1] - 1);
             put(&minuend, i, minuend.digits[i] + powi(10, digit_size));
         }
-        put(&res, i, minuend.digits[i] - subtrahend.digits[i]);
+        put(&res, i, minuend.digits[i] - subtrahend_digit);
     }
 
     return res;

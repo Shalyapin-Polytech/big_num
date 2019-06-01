@@ -36,7 +36,7 @@ void test();
 
 int main() {
     test();
-    printf("yep");
+    printf("All tests passed!");
     return 0;
 }
 
