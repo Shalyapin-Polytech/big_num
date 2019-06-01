@@ -55,6 +55,7 @@ division div_euc(big_num a, big_num b)
 ```
 Делит числа `a` и `b` [столбиком](https://ru.wikipedia.org/wiki/Деление_столбиком). Возвращает таблицу из двух больших чисел — частного и остатка.
 
+### Строковое представление
 ```c
 big_num from_string(char* str)
 ```
