@@ -6,15 +6,12 @@ int main() {
     scanf("%s %s", input_file_name, output_file_name);
 
     FILE* input_file = fopen(input_file_name, "r");
-    char input[256];
-    fgets(input, 256, input_file);
+    char command[256], a_str[256], b_str[256];
+    fscanf(input_file, "%s %s %s", command, a_str, b_str);
     fclose(input_file);
 
-    char* sep = " ";
-    char* command = strtok(input, sep);
-    big_num a = from_string(strtok(NULL, sep));
-    big_num b = from_string(strtok(NULL, sep));
-
+    big_num a = from_string(a_str);
+    big_num b = from_string(b_str);
     big_num res = create_empty(a.size + b.size);
 
     if (strcmp(command, "add") == 0)
