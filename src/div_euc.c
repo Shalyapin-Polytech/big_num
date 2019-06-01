@@ -1,4 +1,6 @@
 #include "big_num.h"
+#include "math_utils.h"
+#include "error.h"
 #include <string.h>
 
 char* cut(char* str, int from, int to) {
@@ -17,6 +19,9 @@ division div_close(big_num a, big_num b) {
     big_num remainder = a;
     while (compare(b, remainder) <= 0) {
         quotient++;
+        if (quotient > 9) {
+            error("too big difference in numbers");
+        }
         remainder = sub(remainder, b);
     }
     division res = {create(quotient), remainder};
@@ -24,6 +29,9 @@ division div_close(big_num a, big_num b) {
 }
 
 division div_euc(big_num a, big_num b) {
+    if (compare(b, create(0)) == 0) {
+        error("attempt to divide by 0");
+    }
     char* str_a = to_string(a);
     char* str_b = to_string(b);
     int str_a_len = strlen(str_a);

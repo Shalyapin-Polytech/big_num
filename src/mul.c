@@ -19,7 +19,7 @@ big_num mul(big_num a, big_num b) {
             big_num res_digit = create_empty(2);
             for (int k = 0; k < digit_size; k++) {
                 for (int l = 0; l < digit_size; l++) {
-                    res_digit = add(res_digit, create(split_a[k] * split_b[l] * powi(10, k + l)));
+                    res_digit = add(res_digit, shift(create(split_a[k] * split_b[l]), k + l));
                 }
             }
             res = add(res, shift(res_digit, digit_size * (i + j)));

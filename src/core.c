@@ -1,4 +1,6 @@
 #include "big_num.h"
+#include "math_utils.h"
+#include "error.h"
 
 big_num create_empty(int released_size) {
     big_num obj = {
@@ -10,8 +12,9 @@ big_num create_empty(int released_size) {
 }
 
 void put(big_num* num, int to, int what) {
-    if (to >= num->released_size)
-        return;
+    if (to >= num->released_size) {
+        error("not enough allocated memory")
+    }
     num->digits[to] = what;
     if (what == 0) {
         if (to == num->size - 1) {
@@ -26,9 +29,10 @@ void put(big_num* num, int to, int what) {
 }
 
 big_num create(int i) {
-    big_num obj = create_empty(i < 1000 ? 1 : 2);
-    put(&obj, 0, i % 1000);
-    if (i >= 1000)
-        put(&obj, 1, i / 1000);
+    if (i >= powi(10, digit_size)) {
+        error("attempt to put too big integer");
+    }
+    big_num obj = create_empty(1);
+    put(&obj, 0, i);
     return obj;
 }
