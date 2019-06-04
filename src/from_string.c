@@ -11,7 +11,7 @@ big_num from_string(char* str) {
         for (int digit_i = 0; digit_i < digit_size && str_i - digit_i >= 0; digit_i++) {
             int numeral = (int) ( str[str_i - digit_i] - '0' );
             if (numeral < 0 || numeral > 9) {
-                error("invalid input format");
+                ERROR("invalid input format");
             }
             put(&num, num_i, num.digits[num_i] + ( numeral * powi(10, digit_i) ));
         }

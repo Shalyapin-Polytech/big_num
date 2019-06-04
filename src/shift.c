@@ -10,6 +10,7 @@ big_num shift(big_num num, int exp) {
         zeros[i] = '0';
     }
     strcat(str_num, zeros);
+    free(zeros);
 
     return from_string(str_num);
 }

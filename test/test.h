@@ -8,19 +8,19 @@
 void _assert_strings_equals(char* a, char* b, int line) {
     if (strcmp(a, b) != 0) {
         printf("at line %d: expected %s, but got %s\n", line, a, b);
-        error("test failed");
+        ERROR("test failed");
     }
 }
 
 void _assert_int_equals(int a, int b, int line) {
     if (a != b) {
         printf("at line %d: expected %d, but got %d\n", line, a, b);
-        error("test failed");
+        ERROR("test failed");
     }
 }
 
-void _assert_int_array_equals(int* a, int* b, size_t size, int line) {
-    for (int i = 0; i < (int) size; i++) {
+void _assert_int_array_equals(int* a, int* b, int size, int line) {
+    for (int i = 0; i < size; i++) {
         _assert_int_equals(a[i], b[i], line);
     }
 }
@@ -36,7 +36,7 @@ void test();
 
 int main() {
     test();
-    printf("All tests passed!");
+    printf("All tests passed!\n");
     return 0;
 }
 

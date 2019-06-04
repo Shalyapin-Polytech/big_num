@@ -20,7 +20,7 @@ division div_close(big_num a, big_num b) {
     while (compare(b, remainder) <= 0) {
         quotient++;
         if (quotient > 9) {
-            error("too big difference in numbers");
+            ERROR("too big difference in numbers");
         }
         remainder = sub(remainder, b);
     }
@@ -30,7 +30,7 @@ division div_close(big_num a, big_num b) {
 
 division div_euc(big_num a, big_num b) {
     if (compare(b, create(0)) == 0) {
-        error("attempt to divide by 0");
+        ERROR("attempt to divide by 0");
     }
     char* str_a = to_string(a);
     char* str_b = to_string(b);
@@ -53,7 +53,13 @@ division div_euc(big_num a, big_num b) {
         strcpy(str_a, to_string(remainder));
         strcat(str_a, cut_str_a_2);
         j--;
+
+        free(cut_str_a_1);
+        free(cut_str_a_2);
     }
+
+    free(str_a);
+    free(str_b);
 
     division res = {quotient, remainder};
     return res;

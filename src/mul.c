@@ -23,6 +23,9 @@ big_num mul(big_num a, big_num b) {
                 }
             }
             res = add(res, shift(res_digits, digit_size * (i + j)));
+
+            free(split_a);
+            free(split_b);
         }
     }
 

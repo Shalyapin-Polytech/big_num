@@ -13,7 +13,7 @@ big_num create_empty(int released_size) {
 
 void put(big_num* num, int to, int what) {
     if (to >= num->released_size) {
-        error("not enough allocated memory");
+        ERROR("not enough allocated memory");
     }
     num->digits[to] = what;
     if (what == 0) {
@@ -30,7 +30,7 @@ void put(big_num* num, int to, int what) {
 
 big_num create(int i) {
     if (i >= powi(10, digit_size)) {
-        error("attempt to put too big integer");
+        ERROR("attempt to put too big integer");
     }
     big_num obj = create_empty(1);
     put(&obj, 0, i);
