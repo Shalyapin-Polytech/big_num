@@ -2,9 +2,6 @@
 EXE:=.exe
 export TESTS
 export CFLAGS:=-Wall -std=c11 -pedantic -Wextra -I../include $(CFLAGS)
-export LDLIBS:=-lm
-PREFIX:=${or $(PREFIX),$(PREFIX),/usr/local}
-includes=${wildcard include/*.h}
 
 ifdef DEBUG
   CFLAGS:=$(CFLAGS) -g -DDEBUG
@@ -24,18 +21,6 @@ example:
 .PHONY: test
 test: build
 	$(MAKE) -C test
-
-.PHONY: install
-install: build
-	mkdir -p "$(PREFIX)/lib"
-	mkdir -p "$(PREFIX)/include"
-	cp src/lib$(NAME).a "$(PREFIX)/lib"
-	cp $(includes) "$(PREFIX)/include"
-
-.PHONY: uninstall
-uninstall:
-	$(RM) "$(PREFIX)/lib/lib$(NAME).a"
-	$(RM) ${foreach header,$(includes),"$(PREFIX)/$(header)"}
 
 .PHONY: clean
 clean:
